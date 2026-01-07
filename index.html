@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Веб-Квест: 5 Этапов</title>
+    <style>
+        body, html { margin: 0; padding: 0; font-family: sans-serif; height: 100%; }
+        
+        .screen {
+            display: none; flex-direction: column; align-items: center; justify-content: center;
+            height: 100vh; width: 100%; background-size: cover; background-position: center;
+            text-align: center; padding: 20px; box-sizing: border-box;
+        }
+        .active { display: flex; }
+
+        .content-box {
+            background: rgba(255, 255, 255, 0.95); padding: 20px; border-radius: 15px;
+            max-width: 450px; width: 90%; box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        }
+
+        img { max-width: 100%; height: 180px; object-fit: cover; margin: 10px 0; border-radius: 8px; }
+        input { padding: 12px; width: 80%; margin: 10px 0; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; }
+        
+        .btn-container { display: flex; gap: 10px; justify-content: center; margin-top: 15px; }
+        button { padding: 12px 20px; font-size: 14px; cursor: pointer; border: none; border-radius: 5px; background: #28a745; color: white; text-transform: uppercase; font-weight: bold; }
+        .btn-back { background: #6c757d; }
+        button:active { transform: scale(0.95); }
+
+        /* --- [БЛОК 1: ФОНЫ СТРАНИЦ] --- */
+        #screen-start { background-image: url('https://i.ibb.co/4wHLBfkm/dr1.jpg'); }
+        #screen-st1, #screen-st1-ok { background-image: url('https://i.ibb.co/jnNvXrH/image.jpg'); }
+        #screen-st2, #screen-st2-ok { background-image: url('picsum.photos'); }
+        #screen-st3, #screen-st3-ok { background-image: url('picsum.photos'); }
+        #screen-st4, #screen-st4-ok { background-image: url('picsum.photos'); }
+        #screen-st5, #screen-st5-ok { background-image: url('picsum.photos'); }
+        #screen-final { background-image: url('picsum.photos'); }
+    </style>
+</head>
+<body>
+
+    <!-- СТРАНИЦА: СТАРТ -->
+    <div id="screen-start" class="screen active">
+        <div class="content-box">
+            <h1>Привет Именинница</h1>
+            <p>Конечно мы могли сразу подарить тебе подарок, но это скучно! Поэтому тебе прийдется пройти сложный путь испытаний, полный приключений и опасностей.</p>
+            <img src="https://i.ibb.co/21Vz37Nz/map.jpg">
+            <div class="btn-container">
+                <button onclick="nav('screen-st1')">Начать</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ЭТАП 1 -->
+    <div id="screen-st1" class="screen">
+        <div class="content-box">
+            <h2>Этап 1 "Поиски в квартире"</h2>
+            <p>Ищи за лестницей посланье</p>
+            <img src="https://i.ibb.co/zV2YPL1T/1-1.jpg">
+            <input type="text" id="ans1" placeholder="Введите код">
+            <div class="btn-container">
+                <button class="btn-back" onclick="nav('screen-start')">Назад</button>
+                <button onclick="check('ans1', '111', 'screen-st1-ok')">Проверить</button>
+            </div>
+        </div>
+    </div>
+    <div id="screen-st1-ok" class="screen">
+        <div class="content-box">
+            <h2>Отлично!</h2>
+            <p>Вы прошли 1 этап. Двигаемся дальше?</p>
+            <img src="picsum.photos">
+            <div class="btn-container">
+                <button class="btn-back" onclick="nav('screen-st1')">Назад</button>
+                <button onclick="nav('screen-st2')">Следующий этап</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ЭТАП 2 -->
+    <div id="screen-st2" class="screen">
+        <div class="content-box">
+            <h2>Этап 2</h2>
+            <p>Текст второй загадки. Код: 222</p>
+            <img src="picsum.photos">
+            <input type="text" id="ans2" placeholder="Введите код">
+            <div class="btn-container">
+                <button class="btn-back" onclick="nav('screen-st1-ok')">Назад</button>
+                <button onclick="check('ans2', '222', 'screen-st2-ok')">Проверить</button>
+            </div>
+        </div>
+    </div>
+    <div id="screen-st2-ok" class="screen">
+        <div class="content-box">
+            <h2>Победа!</h2>
+            <p>Второй этап позади. Что же дальше?</p>
+            <img src="picsum.photos">
+            <div class="btn-container">
+                <button class="btn-back" onclick="nav('screen-st2')">Назад</button>
+                <button onclick="nav('screen-st3')">Следующий этап</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ЭТАП 3 -->
+    <div id="screen-st3" class="screen">
+        <div class="content-box">
+            <h2>Этап 3</h2>
+            <p>Загадка середины пути. Код: 333</p>
+            <img src="picsum.photos">
+            <input type="text" id="ans3" placeholder="Введите код">
+            <div class="btn-container">
+                <button class="btn-back" onclick="nav('screen-st2-ok')">Назад</button>
+                <button onclick="check('ans3', '333', 'screen-st3-ok')">Проверить</button>
+            </div>
+        </div>
+    </div>
+    <div id="screen-st3-ok" class="screen">
+        <div class="content-box">
+            <h2>Верно!</h2>
+            <p>Вы очень умны. Половина пройдена!</p>
+            <img src="picsum.photos">
+            <div class="btn-container">
+                <button class="btn-back" onclick="nav('screen-st3')">Назад</button>
+                <button onclick="nav('screen-st4')">Следующий этап</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ЭТАП 4 -->
+    <div id="screen-st4" class="screen">
+        <div class="content-box">
+            <h2>Этап 4</h2>
+            <p>Предпоследний рывок. Код: 444</p>
+            <img src="picsum.photos">
+            <input type="text" id="ans4" placeholder="Введите код">
+            <div class="btn-container">
+                <button class="btn-back" onclick="nav('screen-st3-ok')">Назад</button>
+                <button onclick="check('ans4', '444', 'screen-st4-ok')">Проверить</button>
+            </div>
+        </div>
+    </div>
+    <div id="screen-st4-ok" class="screen">
+        <div class="content-box">
+            <h2>Почти финиш!</h2>
+            <p>Остался всего один шаг.</p>
+            <img src="picsum.photos">
+            <div class="btn-container">
+                <button class="btn-back" onclick="nav('screen-st4')">Назад</button>
+                <button onclick="nav('screen-st5')">Следующий этап</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ЭТАП 5 -->
+    <div id="screen-st5" class="screen">
+        <div class="content-box">
+            <h2>Финальный Этап</h2>
+            <p>Последняя загадка. Код: 555</p>
+            <img src="picsum.photos0">
+            <input type="text" id="ans5" placeholder="Введите код">
+            <div class="btn-container">
+                <button class="btn-back" onclick="nav('screen-st4-ok')">Назад</button>
+                <button onclick="check('ans5', '555', 'screen-final')">Проверить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ФИНАЛ -->
+    <div id="screen-final" class="screen">
+        <div class="content-box">
+            <h1>УРА! ВЫ ПРОШЛИ!</h1>
+            <p>Вы настоящий мастер квестов. Поздравляем!</p>
+            <img src="picsum.photos1">
+            <!-- Кнопок нет, квест завершен -->
+        </div>
+    </div>
+
+    <script>
+        // Функция перехода между страницами
+        function nav(id) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo(0,0); // Прокрутка вверх для мобильных
+        }
+
+        // Функция проверки кода
+        function check(inputId, correctCode, nextId) {
+            const userInput = document.getElementById(inputId).value;
+            if (userInput.toLowerCase().trim() === correctCode.toLowerCase()) {
+                nav(nextId);
+            } else {
+                alert("Неверный код! Попробуйте еще раз.");
+            }
+        }
+    </script>
+</body>
+</html>
